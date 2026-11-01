@@ -28,7 +28,10 @@ spring:
           model: ${GEMINI_CHAT_MODEL:gemini-2.0-flash}
           temperature: 0.2
         embedding:
-          model: ${GEMINI_EMBEDDING_MODEL:text-embedding-004}
+          api-key: ${GEMINI_API_KEY:demo-key}
+          text:
+            model: ${GEMINI_EMBEDDING_MODEL:text-embedding-004}
+            dimensions: 768
 
     vectorstore:
       pgvector:
