@@ -30,7 +30,7 @@ spring:
         embedding:
           api-key: ${GEMINI_API_KEY:demo-key}
           text:
-            model: ${GEMINI_EMBEDDING_MODEL:text-embedding-004}
+            model: ${GEMINI_EMBEDDING_MODEL:gemini-embedding-001}
             dimensions: 768
 
     vectorstore:
