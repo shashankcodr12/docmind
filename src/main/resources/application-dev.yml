@@ -25,7 +25,7 @@ spring:
       genai:
         api-key: ${GEMINI_API_KEY:demo-key}
         chat:
-          model: ${GEMINI_CHAT_MODEL:gemini-2.0-flash}
+          model: ${GEMINI_CHAT_MODEL:gemini-2.5-flash}
           temperature: 0.2
         embedding:
           api-key: ${GEMINI_API_KEY:demo-key}
