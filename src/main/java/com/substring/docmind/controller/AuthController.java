@@ -46,7 +46,10 @@ public class AuthController {
                 loginRequest.password()
         );
         Authentication authenticated = authenticationManager.authenticate(authentication);
-        User user = userRepository.findByUsername(loginRequest.username()).orElseThrow(() -> new RuntimeException("User not found"));
+        // Resolve user by username first, then fall back to email (matches CustomUserDetailService)
+        User user = userRepository.findByUsername(loginRequest.username())
+                .or(() -> userRepository.findByEmail(loginRequest.username()))
+                .orElseThrow(() -> new RuntimeException("User not found"));
 
         String token = jwtService.generateToken(new CustomUserDetail(user));
         var response = new LoginResponse(token, new UserDto(user.getId(), user.getUsername(), user.getEmail(), user.getRole()));
